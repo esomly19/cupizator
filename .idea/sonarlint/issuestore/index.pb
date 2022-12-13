@@ -8,8 +8,6 @@ J
 C
 pages/auth/login.js,6\0\60f1a41f53b1fc29d404a94278143a5242d44288
 D
-components/NavBar.js,0\9\09dffab90d76e4230d91e36e6ec43977cc37b4d7
-D
 pages/party/index.js,a\4\a4b08e7f04f0145375f8a833d3407aa12af856dd
 C
 pages/poll/index.js,9\b\9bdc3e5e87ebd580315d7ac1f5427cbbda7477d0
@@ -19,8 +17,6 @@ O
 pages/api/auth/[...nextauth].js,1\2\12025bf62448ff4578a06ca3d1cd8290f2e80b1d
 =
 pages/_app.js,2\0\202812cedbed29fdf712361f0e7a919932f9e751
-D
-prisma/schema.prisma,1\8\187e4a6f168cf143dde68ce28a29ae08ce9b9578
 F
 pages/friends/index.js,8\a\8a616cc412da08fea1c01dc89e943f404e559705
 O

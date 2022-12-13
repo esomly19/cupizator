@@ -2,6 +2,7 @@ import {Avatar, Button, Dropdown, Navbar, Text} from "@nextui-org/react";
 import {signOut, useSession} from "next-auth/react"
 import {useRouter} from "next/router";
 import Link from "next/link";
+import {APP_TITLE} from "../constants/text";
 export default function NavBar(){
     const {status}=useSession();
     const router = useRouter();
@@ -36,7 +37,7 @@ export default function NavBar(){
                 }}
             >
                 <Text b color="inherit" hideIn="xs">
-                    Event Planner
+                    {APP_TITLE}
                 </Text>
             </Navbar.Brand>
             <Navbar.Content
