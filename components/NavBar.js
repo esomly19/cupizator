@@ -48,9 +48,7 @@ export default function NavBar(){
             >{login?
                 <>
                     <Button auto as={Link} href="/" {...setActive("/")}>{"Accueil"}</Button>
-                    <Button auto as={Link} href="/party" {...setActive("/party")}>{"Soirée"}</Button>
-                    <Button auto as={Link} href="/pot" {...setActive("/pot")}>{"Cagnotte"}</Button>
-                    <Button auto as={Link} href="/poll" {...setActive("/poll")}>{"Sondage"}</Button>
+                    <Button auto as={Link} href="/group" {...setActive("/group")}>{"Groupes"}</Button>
                     <Button auto as={Link} href="/friends" {...setActive("/friends")}>{"Amis"}</Button>
                 </>:<></>
             }
