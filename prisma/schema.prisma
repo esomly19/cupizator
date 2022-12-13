@@ -17,8 +17,8 @@ model User {
   potId     Int?
   Group     Group?     @relation(fields: [groupId], references: [id])
   groupId   Int?
-  Position  Position[]
-  Bet       Bet[]
+  Position  Position[]?
+  Bet       Bet[]?
 }
 
 model Pot {
@@ -26,10 +26,10 @@ model Pot {
   name      String   @db.VarChar(255)
   tag       String   @db.VarChar(255)
   state     State    @default(CLOSED)
-  members   User[]
+  members   User[]?
   managerId Int?
   type      PotType?
-  Group     Group[]
+  Group     Group[]?
 }
 
 model Group {
@@ -37,11 +37,11 @@ model Group {
   name      String  @db.VarChar(255)
   managerId Int
   pot       Pot?    @relation(fields: [potId], references: [id])
-  potId     Int
+  potId     Int?
   state     State   @default(CREATED)
-  members   User[]
-  bets      Bet[]
-  matchs    Match[]
+  members   User[]?
+  bets      Bet[]?
+  matchs    Match[]?
 }
 
 model Position {
@@ -65,10 +65,10 @@ model Bet {
 model Match {
   id      Int      @id @default(autoincrement())
   date    DateTime
-  team1   String
-  team2   String
-  score1  Int
-  score2  Int
+  team1   String?
+  team2   String?
+  score1  Int?
+  score2  Int?
   Group   Group?   @relation(fields: [groupId], references: [id])
   groupId Int?
 }
