@@ -21,7 +21,6 @@ model Pot {
   tag        String    @db.VarChar(255)
   state      State     @default(CLOSED)
   members    User[]
-  products   Product[]
   managerId  Int?
   type       PotType?
 }
@@ -33,11 +32,12 @@ model Group{
     pot         Pot? @relation(fields: [potId], references: [id])
     potId       Int?
     state       State @default(CREATED)
+    members     User[] 
 }
 
 model Position {
     id          Int     @id @default(autoincrement())
-    userId      Int?    
+    userId      User?    @relation(fields: [userId], references: [id])
     score       Int?  
 }
 
@@ -45,9 +45,10 @@ model Bet {
     id          Int     @id @default(autoincrement())
     score       Int?
     vainqueur   String? @db.VarChar(255)
-    type        TypeBet?        
+    type        TypeBet?
+    userId      User?    @relation(fields: [userId], references: [id])
+    groupId     Group?   @relation(fields: [groupId], references: [id])
 }
-
 
 enum Role {
   INVITE
