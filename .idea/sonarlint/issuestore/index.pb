@@ -3,8 +3,6 @@
 constants/css.js,2\2\22ad66ec744e3477bbd00b4de40b7c5bc2bad6ac
 B
 styles/globals.css,8\c\8c258232cbcd5d83991c524a9e86c8d3f984fc57
-J
-pages/api/auth/register.js,b\8\b8aa8c6c1bcc2830de7a2570440838392fc6befb
 C
 pages/auth/login.js,6\0\60f1a41f53b1fc29d404a94278143a5242d44288
 D
