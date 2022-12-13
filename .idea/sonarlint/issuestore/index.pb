@@ -17,8 +17,6 @@ O
 pages/api/auth/[...nextauth].js,1\2\12025bf62448ff4578a06ca3d1cd8290f2e80b1d
 =
 pages/_app.js,2\0\202812cedbed29fdf712361f0e7a919932f9e751
-F
-pages/friends/index.js,8\a\8a616cc412da08fea1c01dc89e943f404e559705
 O
 components/icons/StyledBadge.js,7\f\7fa9504dc581dcb3b7e6d3f73c2a5815e86e0edb
 N
