@@ -8,46 +8,57 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique @db.VarChar(255)
-  password  String  @db.VarChar(255)
-  firstname String  @db.VarChar(255)
-  lastname  String  @db.VarChar(255)
+  id        Int        @id @default(autoincrement())
+  email     String     @unique @db.VarChar(255)
+  password  String     @db.VarChar(255)
+  firstname String     @db.VarChar(255)
+  lastname  String     @db.VarChar(255)
+  Pot       Pot?       @relation(fields: [potId], references: [id])
+  potId     Int?
+  Group     Group?     @relation(fields: [groupId], references: [id])
+  groupId   Int?
+  Position  Position[]
+  Bet       Bet[]
 }
 
 model Pot {
-  id         Int       @id @default(autoincrement())
-  name       String    @db.VarChar(255)
-  tag        String    @db.VarChar(255)
-  state      State     @default(CLOSED)
-  members    User[]
-  managerId  Int?
-  type       PotType?
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  tag       String   @db.VarChar(255)
+  state     State    @default(CLOSED)
+  members   User[]
+  managerId Int?
+  type      PotType?
+  Group     Group[]
 }
 
-model Group{
-    id          Int     @id @default(autoincrement())
-    name        String  @db.VarChar(255)
-    managerId   Int?
-    pot         Pot? @relation(fields: [potId], references: [id])
-    potId       Int?
-    state       State @default(CREATED)
-    members     User[] 
+model Group {
+  id        Int    @id @default(autoincrement())
+  name      String @db.VarChar(255)
+  managerId Int
+  pot       Pot?   @relation(fields: [potId], references: [id])
+  potId     Int
+  state     State  @default(CREATED)
+  members   User[]
+  Bet       Bet[]
 }
 
 model Position {
-    id          Int     @id @default(autoincrement())
-    userId      User?    @relation(fields: [userId], references: [id])
-    score       Int?  
+  id     Int   @id @default(autoincrement())
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int
+  score  Int?
 }
 
 model Bet {
-    id          Int     @id @default(autoincrement())
-    score       Int?
-    vainqueur   String? @db.VarChar(255)
-    type        TypeBet?
-    userId      User?    @relation(fields: [userId], references: [id])
-    groupId     Group?   @relation(fields: [groupId], references: [id])
+  id        Int      @id @default(autoincrement())
+  score     Int?
+  vainqueur String?  @db.VarChar(255)
+  type      TypeBet?
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int
+  group     Group?   @relation(fields: [groupId], references: [id])
+  groupId   Int
 }
 
 enum Role {
@@ -56,11 +67,20 @@ enum Role {
 }
 
 enum TypeBet {
-    SCORE
-    VAINQUEUR
+  SCORE
+  VAINQUEUR
 }
 
 enum PotType {
-    MONEY
-    BASIC
+  MONEY
+  BASIC
+}
+
+enum State {
+  CREATED
+  UNCONFIRMED
+  CONFIRMED
+  OPENED
+  CLOSED
+  ENDED
 }
