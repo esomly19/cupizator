@@ -33,14 +33,16 @@ model Pot {
 }
 
 model Group {
-  id        Int    @id @default(autoincrement())
-  name      String @db.VarChar(255)
-  managerId Int
-  pot       Pot?   @relation(fields: [potId], references: [id])
-  potId     Int
-  state     State  @default(CREATED)
-  members   User[]
-  Bet       Bet[]
+  id           Int        @id @default(autoincrement())
+  name         String     @db.VarChar(255)
+  managerId    Int
+  pot          Pot?       @relation(fields: [potId], references: [id])
+  potId        Int
+  state        State      @default(CREATED)
+  members      User[]
+  bet          Bet[]
+  tournament   Tournament @relation(fields: [tournamentId], references: [id])
+  tournamentId Int
 }
 
 model Position {
@@ -65,6 +67,7 @@ model Tournament {
   id      Int      @id @default(autoincrement())
   name    String?
   matches Matche[]
+  Group   Group[]
 }
 
 model Matche {
