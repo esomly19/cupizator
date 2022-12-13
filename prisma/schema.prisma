@@ -33,14 +33,15 @@ model Pot {
 }
 
 model Group {
-  id        Int    @id @default(autoincrement())
-  name      String @db.VarChar(255)
+  id        Int     @id @default(autoincrement())
+  name      String  @db.VarChar(255)
   managerId Int
-  pot       Pot?   @relation(fields: [potId], references: [id])
+  pot       Pot?    @relation(fields: [potId], references: [id])
   potId     Int
-  state     State  @default(CREATED)
+  state     State   @default(CREATED)
   members   User[]
-  bet       Bet[]
+  bets      Bet[]
+  matchs    Match[]
 }
 
 model Position {
@@ -61,13 +62,15 @@ model Bet {
   groupId   Int
 }
 
-model Matche {
-  id     Int      @id @default(autoincrement())
-  date   DateTime
-  team1  String
-  team2  String
-  score1 Int
-  score2 Int
+model Match {
+  id      Int      @id @default(autoincrement())
+  date    DateTime
+  team1   String
+  team2   String
+  score1  Int
+  score2  Int
+  Group   Group?   @relation(fields: [groupId], references: [id])
+  groupId Int?
 }
 
 enum Role {
