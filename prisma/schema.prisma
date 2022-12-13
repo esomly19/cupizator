@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique @db.VarChar(255)
+  password  String  @db.VarChar(255)
+  roles     Role[]  @default([USER])
+  firstname String  @db.VarChar(255)
+  lastname  String  @db.VarChar(255)
+  friendsId   String[]
+  pots      Pot[]
+}
+
+model Pot {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(255)
+  tag        String    @db.VarChar(255)
+  state      State     @default(CLOSED)
+  members    User[]
+  products   Product[]
+  managerId  Int?
+  type       PotType?
+}
+
+model Product{
+    id          Int     @id @default(autoincrement())
+    name        String  @db.VarChar(255)
+    quantity    Int
+    percent     Int?
+    managerId   Int?
+    pot         Pot? @relation(fields: [potId], references: [id])
+    potId       Int?
+    state       State @default(CREATED)
+    type        ProductType?
+}
+
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum State {
+    CREATED
+    UNCONFIRMED
+    CONFIRMED
+    OPENED
+    CLOSED
+    ENDED
+}
+
+enum PotType {
+    MONEY
+    BASIC
+}
+
+enum ProductType{
+    FOOD
+    MATERIAL
+    DRINK
+    MONEY
+}
