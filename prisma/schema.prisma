@@ -61,6 +61,23 @@ model Bet {
   groupId   Int
 }
 
+model Tournament {
+  id      Int      @id @default(autoincrement())
+  name    String?
+  matches Matche[]
+}
+
+model Matche {
+  id           Int         @id @default(autoincrement())
+  date         DateTime
+  team1        String
+  team2        String
+  score1       Int
+  score2       Int
+  Tournament   Tournament? @relation(fields: [tournamentId], references: [id])
+  tournamentId Int?
+}
+
 enum Role {
   INVITE
   ADMIN
