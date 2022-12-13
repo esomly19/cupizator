@@ -11,11 +11,8 @@ model User {
   id        Int     @id @default(autoincrement())
   email     String  @unique @db.VarChar(255)
   password  String  @db.VarChar(255)
-  roles     Role[]  @default([USER])
   firstname String  @db.VarChar(255)
   lastname  String  @db.VarChar(255)
-  friendsId   String[]
-  pots      Pot[]
 }
 
 model Pot {
@@ -29,41 +26,40 @@ model Pot {
   type       PotType?
 }
 
-model Product{
+model Group{
     id          Int     @id @default(autoincrement())
     name        String  @db.VarChar(255)
-    quantity    Int
-    percent     Int?
     managerId   Int?
     pot         Pot? @relation(fields: [potId], references: [id])
     potId       Int?
     state       State @default(CREATED)
-    type        ProductType?
+}
+
+model Position {
+    id          Int     @id @default(autoincrement())
+    userId      Int?    
+    score       Int?  
+}
+
+model Bet {
+    id          Int     @id @default(autoincrement())
+    score       Int?
+    vainqueur   String? @db.VarChar(255)
+    type        TypeBet?        
 }
 
 
 enum Role {
-  USER
+  INVITE
   ADMIN
 }
 
-enum State {
-    CREATED
-    UNCONFIRMED
-    CONFIRMED
-    OPENED
-    CLOSED
-    ENDED
+enum TypeBet {
+    SCORE
+    VAINQUEUR
 }
 
 enum PotType {
     MONEY
     BASIC
-}
-
-enum ProductType{
-    FOOD
-    MATERIAL
-    DRINK
-    MONEY
 }
