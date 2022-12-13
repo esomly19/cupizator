@@ -1,0 +1,92 @@
+{
+    "name": "FIFA WORLD CUP Quatar 2022",
+    "rounds": [
+        {
+            "name": "Semi-Final Phase 1",
+            "matches": [
+                {
+                    "date":"2022-13-12",
+                    "hour":"20-00",
+                    "isEnd": false,
+                    "isStart": false,
+                    "team1": {
+                        "key": "ARG",
+                        "name": "Argentina",
+                        "code": "ar"
+                    },
+                    "team2": {
+                        "key": "Cr",
+                        "name": "Croatia",
+                        "code": "hr"
+                    },
+                    "score1":0,
+                    "score2":0
+                },
+                {
+                    "date":"2022-14-12",
+                    "hour":"20-00",
+                    "team1": {
+                        "key": "FRA",
+                        "name": "France",
+                        "code": "fr"
+                    },
+                    "team2": {
+                        "key": "MA",
+                        "name": "Maroco",
+                        "code": "ma"
+                    },
+                    "score1":0,
+                    "score2":0
+                }
+            ]
+        },
+        {
+            "name": "Final",
+            "matches": [
+                {
+                    "date":"2022-18-12",
+                    "hour":"20-00",
+                    "isEnd": false,
+                    "isStart": false,
+                    "team1": {
+                        "key": "FRA",
+                        "name": "France",
+                        "code": "fr"
+                    },
+                    "team2": {
+                        "key": "ARG",
+                        "name": "Argentina",
+                        "code": "ar"
+                    },
+                    "score1":0,
+                    "score2":0
+                }
+                
+            ]
+        },
+        {
+            "name": "Looser-Final",
+            "matches": [
+                {
+                    "date":"2022-18-12",
+                    "hour":"20-00",
+                    "isEnd": false,
+                    "isStart": false,
+                    "team1": {
+                        "key": "MA",
+                        "name": "Maroco",
+                        "code": "ma"
+                    },
+                    "team2": {
+                        "key": "Cr",
+                        "name": "Croatia",
+                        "code": "hr"
+                    },
+                    "score1":0,
+                    "score2":0
+                }
+                
+            ]
+        }
+    ]
+}
