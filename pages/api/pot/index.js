@@ -1,4 +1,4 @@
-import { prisma } from ".prisma/client";
+import prisma from "../../../utils/prisma";
 
 export default async function handler(req, res){
     //By ID 
@@ -7,4 +7,5 @@ export default async function handler(req, res){
             id: req.body.id,
         }
     })
+    return res.status(200).send(potId);
 }
