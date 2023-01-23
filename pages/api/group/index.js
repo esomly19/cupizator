@@ -3,6 +3,7 @@ export default async function handler(req, res) {
     const groups = await prisma.group.findMany({
         include: {
             matchs: true, // Return all fields
+            members:true
         },
     })
     return res.status(200).send(groups);

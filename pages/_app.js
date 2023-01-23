@@ -10,7 +10,8 @@ const theme = createTheme({
         colors: {
             gradient: 'linear-gradient(112deg, #432371 -25%, #9F6976 -10%, #FAAE7B 80%)',
             primary:'rgb(141, 92, 118)',
-            secondary:'#FAAE7B'
+            secondary:'#FAAE7B',
+            warning: 'linear-gradient(240deg, #432371 -25%, #9F6976 -10%, #FAAE7B 80%)',
         },
     }
 })
