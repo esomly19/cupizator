@@ -12,15 +12,15 @@ Les groupes peuvent avoir un nom. De nouvelles fonctionnalités pourront être a
 - Connexion
 - Créer un groupe de parie
 
-_ Inviter a un groupe
-_ Rejoindre un groupe
-_ Parier sur un match (equipe gagnante)
-_ Parier sur un score exact
-_ Consulter la côte d'un match
-_ Gagner et consulter des points
-_ Mettre en place une cagnotte
-_ Pouvoir récupérer des gain
-_ Modifier les informations perso
+- Inviter a un groupe
+- Rejoindre un groupe
+- Parier sur un match (equipe gagnante)
+- Parier sur un score exact
+- Consulter la côte d'un match
+- Gagner et consulter des points
+- Mettre en place une cagnotte
+- Pouvoir récupérer des gain
+- Modifier les informations perso
 
 [Installation]
 
