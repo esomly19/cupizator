@@ -3,15 +3,16 @@ import {useState} from "react";
 import axios from "axios";
 import {useSession} from "next-auth/react";
 
-export default function CreateModal() {
+export default function CreateModal(props) {
     const { setVisible, bindings } = useModal();
     let [nom,setNom] = useState("");
     const { data: session, status } = useSession()
     let [matchs,setMatchs] = useState([]);
+    let [loading,setLoading]=useState(false)
 
     const create = () =>{
-        axios.post("/api/group/add",{...patchData()})
-        close();
+        setLoading(true)
+        axios.post("/api/group/add",{...patchData()}).then(()=>close()).catch(()=>setLoading(false))
     }
 
     const reset = () => {
@@ -20,8 +21,9 @@ export default function CreateModal() {
     }
 
     const close = () => {
-        console.log(session)
+        props.refresh();
         reset();
+        setLoading(false)
         setVisible(false)
     }
 
@@ -85,7 +87,7 @@ export default function CreateModal() {
                     <Button auto flat color="error" onClick={close}>
                         Annuler
                     </Button>
-                    <Button ghost auto color="gradient"onClick={create}>
+                    <Button ghost auto color="gradient"onClick={create} disabled={loading}>
                         Creer
                     </Button>
                 </Modal.Footer>
