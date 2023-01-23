@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Image from "next/image";
 import {useSession} from "next-auth/react";
+import MatchsModal from "../../components/group/MatchsModal";
 
 
 export default function Group(){
@@ -42,7 +43,7 @@ export default function Group(){
                             </Card.Body>
                             <Card.Divider />
                             <Card.Footer>{group.members.find((member)=>member.id===session?.user.id)?
-                                <Button onClick={()=>console.log("voir matchs")} color={"warning"}>{"Consulter mes paris"}</Button>
+                                <MatchsModal group={group}/>
                                 :
                                 <Button onClick={()=>participateTour(group.id)} color={"gradient"}>{"S'inscrire pour "+group.price+"€"}</Button>
                             }

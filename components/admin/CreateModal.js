@@ -62,7 +62,7 @@ export default function CreateModal(props) {
                         {"Création d'un groupe"}
                     </Text>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{height:"70vh"}}>
                     <Spacer y={1} />
                     <Input clearable bordered labelPlaceholder="Nom" value={nom} onChange={({target})=>setNom(target.value)}/>
                     <Spacer y={1} />
@@ -86,7 +86,7 @@ export default function CreateModal(props) {
                             </div>
                         </>)}
                     </div>
-                    <div style={{justifyContent:"center",display:"flex"}}>
+                    <div style={{justifyContent:"center",display:"flex",marginTop:"auto"}}>
                         <Button ghost color={"gradient"} onClick={()=>setMatchs([{team1:"",team2:""},...matchs])}>+</Button>
                     </div>
                 </Modal.Body>
