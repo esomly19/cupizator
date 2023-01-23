@@ -13,7 +13,6 @@ export default function Group(){
     },[])
 
     const refresh = () => {
-        console.log("refreshss")
         axios.get("/api/group").then((res)=>setGroups(res.data));
     }
 
@@ -35,7 +34,7 @@ export default function Group(){
                             </Card.Body>
                             <Card.Divider />
                             <Card.Footer>
-                                <Button color={"gradient"}>{"S'inscrire pour 50€"}</Button>
+                                <Button color={"gradient"}>{"S'inscrire pour "+group.price+"€"}</Button>
                             </Card.Footer>
                         </Card>
                     </>)

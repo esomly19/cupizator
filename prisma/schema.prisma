@@ -13,12 +13,12 @@ model User {
   password  String     @db.VarChar(255)
   firstname String     @db.VarChar(255)
   lastname  String     @db.VarChar(255)
-  Pot       Pot?       @relation(fields: [potId], references: [id])
   potId     Int?
-  Group     Group?     @relation(fields: [groupId], references: [id])
   groupId   Int?
-  Position  Position[]
+  Group     Group?     @relation(fields: [groupId], references: [id])
+  Pot       Pot?       @relation(fields: [potId], references: [id])
   Bet       Bet[]
+  Position  Position[]
 }
 
 model Pot {
@@ -26,29 +26,30 @@ model Pot {
   name      String   @db.VarChar(255)
   tag       String   @db.VarChar(255)
   state     State    @default(CLOSED)
-  members   User[]
   managerId Int?
   type      PotType?
   Group     Group[]
+  members   User[]
 }
 
 model Group {
   id        Int     @id @default(autoincrement())
   name      String  @db.VarChar(255)
+  price     Int
   managerId Int
-  pot       Pot?    @relation(fields: [potId], references: [id])
   potId     Int?
   state     State   @default(CREATED)
-  members   User[]
+  pot       Pot?    @relation(fields: [potId], references: [id])
   bets      Bet[]
   matchs    Match[]
+  members   User[]
 }
 
 model Position {
-  id     Int   @id @default(autoincrement())
-  user   User? @relation(fields: [userId], references: [id])
+  id     Int  @id @default(autoincrement())
   userId Int
   score  Int?
+  user   User @relation(fields: [userId], references: [id])
 }
 
 model Bet {
@@ -56,10 +57,10 @@ model Bet {
   score     Int?
   vainqueur String?  @db.VarChar(255)
   type      TypeBet?
-  user      User?    @relation(fields: [userId], references: [id])
   userId    Int
-  group     Group?   @relation(fields: [groupId], references: [id])
   groupId   Int
+  group     Group    @relation(fields: [groupId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Match {
@@ -69,8 +70,8 @@ model Match {
   team2   String?
   score1  Int?
   score2  Int?
-  Group   Group?   @relation(fields: [groupId], references: [id])
   groupId Int?
+  Group   Group?   @relation(fields: [groupId], references: [id])
 }
 
 enum Role {

@@ -6,6 +6,7 @@ import {useSession} from "next-auth/react";
 export default function CreateModal(props) {
     const { setVisible, bindings } = useModal();
     let [nom,setNom] = useState("");
+    let [price,setPrice] = useState("");
     const { data: session, status } = useSession()
     let [matchs,setMatchs] = useState([]);
     let [loading,setLoading]=useState(false)
@@ -31,6 +32,7 @@ export default function CreateModal(props) {
         return {
             managerId:session.user.id,
             name: nom+"",
+            price: parseInt(price),
             matchs: matchs.map((match)=>{
                 return {
                     date:new Date(),
@@ -39,6 +41,8 @@ export default function CreateModal(props) {
             })
         }
     }
+
+    const validation = () => !matchs.find((match)=>!match.team1||!match.team2) && nom && !loading && price
 
     return (
         <div>
@@ -60,6 +64,8 @@ export default function CreateModal(props) {
                 <Modal.Body>
                     <Spacer y={1} />
                     <Input clearable bordered labelPlaceholder="Nom" value={nom} onChange={({target})=>setNom(target.value)}/>
+                    <Spacer y={1} />
+                    <Input clearable bordered labelPlaceholder="Prix d'entrée" value={price} onChange={({target})=>setPrice(target.value)} type={"number"}/>
                     <Spacer y={2.5} />
                     <div style={{overflow:"auto"}}>
                         {matchs.map((match,index)=><>
@@ -87,7 +93,7 @@ export default function CreateModal(props) {
                     <Button auto flat color="error" onClick={close}>
                         Annuler
                     </Button>
-                    <Button ghost auto color="gradient"onClick={create} disabled={loading}>
+                    <Button ghost auto color="gradient"onClick={create} disabled={!validation()}>
                         Creer
                     </Button>
                 </Modal.Footer>
