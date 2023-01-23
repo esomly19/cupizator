@@ -26,6 +26,7 @@ export default function CreateModal(props) {
         reset();
         setLoading(false)
         setVisible(false)
+        setPrice("");
     }
 
     const patchData = () => {
@@ -66,7 +67,7 @@ export default function CreateModal(props) {
                     <Input clearable bordered labelPlaceholder="Nom" value={nom} onChange={({target})=>setNom(target.value)}/>
                     <Spacer y={1} />
                     <Input clearable bordered labelPlaceholder="Prix d'entrée" value={price} onChange={({target})=>setPrice(target.value)} type={"number"}/>
-                    <Spacer y={2.5} />
+                    <Spacer y={1} />
                     <div style={{overflow:"auto"}}>
                         {matchs.map((match,index)=><>
                             <Spacer y={1} />
@@ -86,7 +87,7 @@ export default function CreateModal(props) {
                         </>)}
                     </div>
                     <div style={{justifyContent:"center",display:"flex"}}>
-                        <Button ghost color={"gradient"} onClick={()=>setMatchs([...matchs,{team1:"",team2:""}])}>+</Button>
+                        <Button ghost color={"gradient"} onClick={()=>setMatchs([{team1:"",team2:""},...matchs])}>+</Button>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
