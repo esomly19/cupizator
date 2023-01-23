@@ -11,6 +11,7 @@ Les groupes peuvent avoir un nom. De nouvelles fonctionnalités pourront être a
 - Inscription
 - Connexion
 - Créer un groupe de parie
+
 _ Inviter a un groupe
 _ Rejoindre un groupe
 _ Parier sur un match (equipe gagnante)
