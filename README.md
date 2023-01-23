@@ -8,7 +8,7 @@ Les groupes peuvent avoir un nom. De nouvelles fonctionnalités pourront être a
 
 [Fonctionnalités]
 
-- Inscription :
+- Inscription
 - Connexion
 - Créer un groupe de parie
 _ Inviter a un groupe
