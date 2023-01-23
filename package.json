@@ -13,14 +13,15 @@
   },
   "dependencies": {
     "@nextui-org/react": "^1.0.0-beta.10",
-    "@prisma/client": "^4.6.1",
+    "@prisma/client": "^4.9.0",
     "@react-aria/ssr": "^3.4.0",
     "axios": "^1.2.0",
     "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.2",
+    "md5": "^2.3.0",
     "next": "13.0.4",
     "next-auth": "^4.16.4",
-    "prisma": "^4.6.1",
+    "prisma": "^4.9.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }

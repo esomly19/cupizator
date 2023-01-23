@@ -2,11 +2,20 @@ import {Avatar, Button, Dropdown, Navbar, Text} from "@nextui-org/react";
 import {signOut, useSession} from "next-auth/react"
 import {useRouter} from "next/router";
 import Link from "next/link";
-import {APP_TITLE} from "../constants/text";
+import { APP_TITLE } from "../constants/text";
+import md5 from 'md5';
+
 export default function NavBar(){
-    const {status}=useSession();
+    const { data:session, status } = useSession();
     const router = useRouter();
-    const {pathname} = router;
+    const { pathname } = router;
+
+
+    const avatar = () => {
+        const hash = md5(
+            session.user.email.trim().toLowerCase()).toString();
+        return `https://www.gravatar.com/avatar/${hash}`;
+    }
 
     const login=status==="authenticated";
     const collapseItems = [
@@ -71,7 +80,7 @@ export default function NavBar(){
                                     as="button"
                                     color="gradient"
                                     size="md"
-                                    src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                                    src={avatar()}
                                 />
                             </Dropdown.Trigger>
                         </Navbar.Item>
@@ -89,10 +98,10 @@ export default function NavBar(){
                         >
                             <Dropdown.Item key="profile" css={{ height: "$18" }}>
                                 <Text b color="inherit" css={{ d: "flex" }}>
-                                    Signed in as
+                                    Authentifie en tant que
                                 </Text>
                                 <Text b color="inherit" css={{ d: "flex" }}>
-                                    zoey@example.com
+                                    {session.user.email }
                                 </Text>
                             </Dropdown.Item>
                             <Dropdown.Item key="settings" withDivider>
